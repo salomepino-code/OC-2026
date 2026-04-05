@@ -27,6 +27,15 @@ _start:
 	mov edx, msg
 	call puts 
 
+	mov ebx, msg
+	mov esi, 25       ; posición de 'z'
+	mov byte [ebx + esi], 'Z'
+
+	mov edx, msg
+	call puts
+
+	mov byte [ebx + esi*1 + 19], '%'
+
 
 	mov	eax, 1	    	; seleccionar llamada al sistema para fin de programa
 	int	0x80        	; llamada al sistema - fin de programa
