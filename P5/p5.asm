@@ -36,6 +36,12 @@ _start:
 
 	mov ebx, msg
 	mov esi, 0
+	mov byte [ebx + esi + 25], 'Z'
+	mov edx, msg
+	call puts
+
+	mov ebx, msg
+	mov esi, 0
 	mov byte [ebx + esi*1 + 19], '%'
 
 	mov edx, msg
