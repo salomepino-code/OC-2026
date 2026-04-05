@@ -22,6 +22,12 @@ _start:
 	mov edx, msg
 	call puts
 
+	mov byte [eax + 26], '@' 
+
+	mov edx, msg
+	call puts 
+
+
 	mov	eax, 1	    	; seleccionar llamada al sistema para fin de programa
 	int	0x80        	; llamada al sistema - fin de programa
 
