@@ -1,47 +1,105 @@
-%include "../LIB/pc_io.inc"  
+%include "../LIB/pc_io.inc"
 
-section	.data                                       
-msg db "caracter menor a 5", 0
-msg2 db "caracter es letra", 1
+section .data
+    msg  db "caracter menor a 5", 0
+    msg2 db "caracter es numero", 0
+    msg3 db "caracter es letra", 0
+    msg4 db "Datos capturados", 0
 
-section	.text
-	global _start    
+section .bss
+    array resb 10
+
+section .text
+    global _start
 
 _start:
 
 ;INCISO A
-leer: 
-call getche
-cmp al, '0'
-jb leer
-cmp al, '9'
-ja leer
-cmp al, '5'
-jae finA
-mov edx, msg2
-call puts
-
-finA: 
-mov eax, 1
-mov ebx, 0
-int 00h
+leerA:
+    call getche
+    cmp al, '0'      ; era cmp cx, '0' <- error, debe ser al
+    jb leerA         ; era jb leer <- etiqueta no existia
+    cmp al, '9'
+    ja leerA         ; era ja leer <- etiqueta no existia
+    cmp al, '5'
+    jae incisoB
+    mov edx, msg
+    call puts
 
 ;INCISO B
-leerS: 
-call getche
-cmp al, '0'
-jb leerS
-cmp al, '9'
-ja leerS
-cmp al, al
-jae finNumero
-mov edx, msg
-call puts
+incisoB:
+leerB:
+    call getche
+    cmp al, '0'
+    jb leerB
+    cmp al, '9'
+    jbe finNumero
+    cmp al, 'A'
+    jb leerB
+    cmp al, 'Z'
+    jbe finLetra
+    jmp leerB
 
-finNumero: 
-mov eax, 1
-mov ebx, 1
-int 00h
+finNumero:
+    mov edx, msg2
+    call puts
+    jmp incisoC      ; era jmp leerC <- etiqueta no existia
+
+finLetra:
+    mov edx, msg3
+    call puts
+
+;INCISO C
+incisoC:             ; faltaba esta etiqueta
+    mov cx, 5
+    mov bx, 1
+
+filaC:
+    cmp bx, cx
+    ja incisoD
+    mov dx, bx
+
+asteriscoC:
+    mov al, '*'
+    call putchar
+    dec dx
+    jnz asteriscoC
+    mov al, 10
+    call putchar
+    inc bx
+    jmp filaC
+
+;INCISO D
+incisoD:
+    mov ecx, 10
+    mov edi, array
+
+capturar:
+    call getche
+    mov [edi], al
+    inc edi
+    loop capturar
+
+    mov edx, msg4
+    call puts
+    mov al, 10
+    call putchar
+
+    mov ecx, 10
+    mov esi, array
+
+mostrar:
+    mov al, [esi]
+    call putchar
+    mov al, 10
+    call putchar
+    inc esi
+    loop mostrar
+
+    mov eax, 1
+    mov ebx, 0
+    int 0x80
+
 
 
 
