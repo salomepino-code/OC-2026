@@ -17,10 +17,10 @@ _start:
 ;INCISO A
 leerA:
     call getche
-    cmp al, '0'      ; era cmp cx, '0' <- error, debe ser al
-    jb leerA         ; era jb leer <- etiqueta no existia
+    cmp al, '0'     
+    jb leerA         
     cmp al, '9'
-    ja leerA         ; era ja leer <- etiqueta no existia
+    ja leerA         
     cmp al, '5'
     jae incisoB
     mov edx, msg
@@ -43,14 +43,14 @@ leerB:
 finNumero:
     mov edx, msg2
     call puts
-    jmp incisoC      ; era jmp leerC <- etiqueta no existia
+    jmp incisoC      
 
 finLetra:
     mov edx, msg3
     call puts
 
 ;INCISO C
-incisoC:             ; faltaba esta etiqueta
+incisoC:             
     mov cx, 5
     mov bx, 1
 
