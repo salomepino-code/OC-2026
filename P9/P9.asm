@@ -1,4 +1,5 @@
 %include "../LIB/pc_io.inc"
+%include "../LIB/pc_iox.inc"
 
 section .data
 N equ 10
@@ -28,14 +29,31 @@ inc ebx
 inc ecx
 cmp ecx, N 
 jb leer
+jmp incisoB
+
+incisoB:
+
+mov ecx, 0
+mov ebx, vector 
+
+mostrar:
+mov al, [ebx]
+call pHex_b
+mov al,10	; cambio de linea
+call putchar
+inc ebx
+inc ecx
+cmp ecx, N 
+jb mostrar
 jmp fin
 
-; 
+;MENSAJE
 error:
 mov edx, msg
 call puts
 jmp leer
 
+;SALIR 
 fin:
 mov eax, 1
 mov ebx, 0
