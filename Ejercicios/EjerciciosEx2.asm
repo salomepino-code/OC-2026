@@ -11,3 +11,11 @@ _start:
 
 mov ebx, <cadena> ; cadena terminada en cero ya definida en .data
 call PrintStr
+
+PrintStr:
+call putchar 
+ret
+
+mov eax, 1
+mov ebx, 0
+int 0x80
