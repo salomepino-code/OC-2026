@@ -1,0 +1,25 @@
+%include "../LIB/pc_io.inc"
+
+section .data
+cadena  db "hola", 0
+
+section .bss
+
+section .text
+global _start
+
+_start:
+
+mov ebx, cadena ; cadena terminada en cero ya definida en .data
+call PrintStr
+
+mov ebx, cadena
+call InvertirStr 
+
+mov ebx, cadena   ;  se invierte cadena directamente en su zona de memoria
+call PrintStr     ;  se presenta en pantalla odnuM aloH
+
+
+mov eax, 1
+mov ebx, 0
+int 0x80
