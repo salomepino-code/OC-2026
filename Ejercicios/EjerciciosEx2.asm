@@ -5,17 +5,27 @@ cadena  db "hola", 0
 section .bss
 
 section .text
-global_start
+global _start
 
 _start:
 
-mov ebx, <cadena> ; cadena terminada en cero ya definida en .data
+mov ebx, cadena ; cadena terminada en cero ya definida en .data
 call PrintStr
-
-PrintStr:
-call putchar 
-ret
 
 mov eax, 1
 mov ebx, 0
 int 0x80
+
+PrintStr:
+
+loop:
+mov al, [ebx]
+cmp al, 0
+jz fin
+call putchar
+inc ebx
+jmp loop
+
+fin:
+ret
+
