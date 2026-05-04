@@ -11,7 +11,7 @@ _start:
 
 mov cl, 2                  ;  número del bit a verificar su estado.  
 call TestBit               ;  el estado del bit N del registro AL se copia a la bandera de acarreo.  
-jc es1                       ;  Una vez regresando la bandera C tiene el valor del bit N de AL.
+jc es1                     ;  Una vez regresando la bandera C tiene el valor del bit N de AL.
 jmp es0                                          
 
 es1:
