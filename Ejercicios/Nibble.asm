@@ -1,4 +1,4 @@
-%include "../LIB/pc_io.inc"
+%include "../LIB/pc_iox.inc"
 
 section .data
 
@@ -9,6 +9,7 @@ global _start
 
 _start:
 
+mov al, 35h
 call print_nibble
 
 fin:
@@ -17,11 +18,10 @@ mov ebx, 0
 int 0x80
 
 print_nibble:
-mov al, 35h
 and al, 0Fh
 jmp mostrarDigito
 
 mostrarDigito:
-exter pHex_n
+call pHex_n
 
 ret
