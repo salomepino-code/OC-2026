@@ -3,5 +3,6 @@
 extern suma(int a, int b);
 
 int main(){
-    print("suma = %d", suma(2,5));
+    print("suma = %d \n", suma(2,5));
+    return 0;
 }
