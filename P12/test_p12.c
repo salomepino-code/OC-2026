@@ -10,7 +10,9 @@ int main(){
     printf("longitud = %d \n", strlen("hola"));
 
     printf("\n=== Inciso 2 ===\n");
-    str_mid("Hola Mundo", 5, 10));
+    char salida[50];
+    str_mid(salida, "Hola Mundo", 5, 10);
+    printf("subcadena = %s\n", salida);
 
     printf("\n=== Inciso 3 ===\n");
     printf(" valor = %d  ", clrBit(0xFF, 3));
