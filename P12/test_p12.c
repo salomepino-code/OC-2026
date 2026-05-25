@@ -15,6 +15,6 @@ int main(){
     printf("subcadena = %s\n", salida);
 
     printf("\n=== Inciso 3 ===\n");
-    printf(" valor = %d  ", clrBit(0xFF, 3));
+    printf(" valor =  0x%02X", clrBit(0xFF, 3));
     return 0;
 }
