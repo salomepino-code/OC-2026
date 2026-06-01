@@ -1,0 +1,4 @@
+ PrintStr
+ InvertirStr 
+ PrintStrX
+ strncpy

@@ -10,11 +10,11 @@ mov cl, [ebp+12]
 
 ror eax, cl
 xor al, 0001b
-rol eax, ecx
+rol eax, cl
 pop ebp 
 ret
 
 ;OTRA FORMA
 mov edx, 1
-shl dl, cl
+shl edx, cl
 xor eax, edx
