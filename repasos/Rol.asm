@@ -9,11 +9,15 @@ mov edx, [ebp+8]
 mov ebx, [ebp+12]
 mov ecx, [ebp+16]
 
+;==== OPCIONAL ====
+
 .reducir:
 cmp ecx, ebx
 jb .repetir
 sub ecx, ebx
 jmp .reducir
+
+;==================
 
 .repetir:
 shl edx, 1
