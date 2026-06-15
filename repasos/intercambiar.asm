@@ -11,5 +11,6 @@ mov ecx, [ebp+12]
 mov edx, [ecx]
 mov [ebx], edx
 mov [ecx], eax
+pop ebx
 pop ebp
 ret
