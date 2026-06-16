@@ -1,0 +1,1 @@
+;int Paridad(unsigned int n);

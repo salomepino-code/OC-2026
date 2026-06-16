@@ -18,7 +18,7 @@ mov eax, edx
 mov cl, [ebp+12]
 call putBit
 pop ebp
-ret
+ret 
 
 ;========= OTRA FORMA =======
 mov eax, [ebp+8]
